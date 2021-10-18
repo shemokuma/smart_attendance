@@ -1,0 +1,31 @@
+{% extends "StudentTemplates/base_template.html" %}
+
+{% block main_content %}
+
+<div class="main" data-content id="">
+<div class="card">
+<div class="card-header">
+    {% block page_title %}
+     attendance data
+    {% endblock page_title %}
+    <div class="">
+        <a href="/admin_home" >home</a>
+    </div>
+</div>
+
+  <div class="card-body">
+    {% for attendance_report in attendance_reports %}
+      <div class="">
+        <b>Date : {{ attendance_report.attendance_id.attendance_date }}</b>
+        <br>
+        {% if attendance_report.status == True %}
+        <b>[ status : present ]</b>
+        {% else %}
+        <b>[ status : Absent ]</b>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+</div>
+{% endblock main_content %}

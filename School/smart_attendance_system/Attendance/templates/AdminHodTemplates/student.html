@@ -1,0 +1,68 @@
+{% extends "AdminHodTemplates/base_template.html" %}
+
+{% block main_content %}
+
+<div class="main" data-content id="STUDENT">
+    <div class="card-header">
+        {% block page_title %}
+        manage student
+        {% endblock page_title %}
+        <div class="">
+            <a href="/Addstudent" >Add student</a>
+            <a href="/admin_home" >home</a>
+        </div>
+    </div>
+     <div class="card">
+         <div class="card-header">
+             <div class="">student details</div>
+             <form class="search">
+                   <input type="" class="search-input" name="" placeholder="search student">
+                   <i class="fas fa-search"></i>
+             </form>
+         </div>
+         <div class="card-body">
+                <div class="table-responsive">
+                     <table width="100%">
+                         <thead>
+                            <tr>
+                                 <td>Id</td>
+                                 <td>Email</td>
+                                 <td>first name</td>
+                                 <td>last name</td>
+                                 <td>Username</td>
+                                 <td>Address</td>
+                                 <td>Gender</td>
+                                 <td>Profile Pic</td>
+                                 <td>session year</td>
+                                 <td>course</td>
+                                 <td>last login</td>
+                                 <td>Date join</td>
+                                 <td>action</td>
+                            </tr>
+                         </thead>
+                         <tbody>
+                             {% for student in students %}
+                             <tr>
+                                 <td>{{ student.admin.id }}</td>
+                                 <td>{{ student.admin.email }}</td>
+                                 <td>{{ student.admin.first_name }}</td>
+                                 <td>{{ student.admin.last_name}}</td>
+                                 <td>{{ student.admin.username}}</td>
+                                 <td>{{ student.address }}</td>
+                                 <td>{{ student.gender}}</td>
+                                 <td><img src="{{ student.profile_pic}}" style="width:100px"></td>
+                                 <td>{{ student.session_year_id.session_start_year}} To {{ student.session_year_id.session_End_year}} </td>
+                                 <td>{{ student.course_id.course_name}}</td>
+                                 <td>{{ student.admin.last_login}}</td>
+                                 <td>{{ student.admin.date_joined}}</td>
+                                 <td><a href="/Editstudent/{{student.admin.id}}" class="btn btn-success">Edit</a></td>
+                             </tr>
+                            {% endfor %}
+                         </tbody>
+                 </table>
+                </div>
+        </div>
+    </div>
+</div>
+
+{% endblock main_content %}

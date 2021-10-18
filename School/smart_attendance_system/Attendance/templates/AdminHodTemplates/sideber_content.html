@@ -1,0 +1,127 @@
+<div class="sidebar">
+		<div class="sidebar-brand">
+			<h2><span class="icon"><i class="fab fa-accusoft"></i></span>
+            <span class="title">SHEMKO</span></h2>
+        </div>
+        <div class="sidebar-menu">
+        	<ul>
+        		<li class="sidebar-link  " >
+        			<a href="{% url 'admin_home'%}" class="{% if request.path == admin_home %} sidebar-active {% endif %}">
+        				<span class="icon"><i class="fas fa-home"></i></span>
+   	 				    <span class="title">Dashboard</span>
+        			</a>
+        		</li>
+        		<li class="sidebar-link" data-target='#STAFF'>
+                    {% url 'staff' as staff %}
+                     {% url 'editstaff' staff_id=id as editstaff %}
+                       {% url 'Addstaff' as Addstaff %}
+        			<a href="{% url 'staff'%}" class="{% if request.path == staff %} sidebar-active {% endif %} {% if request.path == editstaff %} sidebar-active{% endif %} {% if request.path == Addstaff %} sidebar-active {% endif %}">
+        				<span class="icon"><i class="fas fa-home"></i></span>
+   	 				    <span class="title">staff</span>
+        			</a>
+        		</li>
+        		<li class="sidebar-link">
+                    {% url 'student' as student %}
+                      {% url 'editstudent' student_id=id as editstudent %}
+                        {% url 'Addstudent' as Addstudent %}
+        			<a href="{% url 'student'%}" class="{% if request.path == student %} sidebar-active {% endif %} {% if request.path == editstudent %} sidebar-active {% endif %} {% if request.path == Addstudent %} sidebar-active {% endif %}">
+        				<span class="icon"><i class="fas fa-home"></i></span>
+   	 				    <span class="title">student</span>
+        			</a>
+        		</li>
+                <li class="sidebar-link">
+                    {% url 'Department' as Department %}
+                     {% url 'EditDepartment' department_id=id as EditDepartment %}
+                       {% url 'AddDepartment' as AddDepartment %}
+                    <a href="{% url 'Department'%}" class="{% if request.path == Department %} sidebar-active {% endif %} {% if request.path == EditDepartment %} sidebar-active {% endif %} {% if request.path == AddDepartment %} sidebar-active {% endif %}" >
+                        <span class="icon"><i class="fas fa-home"></i></span>
+                        <span class="title">Departments</span>
+                    </a>
+                </li>
+        	 <li class="sidebar-link">
+                    {% url 'course' as course %}
+                     {% url 'editcourse' course_id=id as editcourse %}
+                      {% url 'Addcourse' as Addcourse %}
+        			<a href="{% url 'course'%}" class="{% if request.path == course %} sidebar-active {% endif %} {% if request.path == editcourse %} sidebar-active {% endif %} 
+                    {% if request.path == Addcourse %} sidebar-active {% endif %}">
+        				<span class="icon"><i class="fas fa-home"></i></span>
+   	 				    <span class="title">course</span>
+        			</a>
+        		</li>
+        		<li class="sidebar-link" data-target='#SUBJECT'>
+                    {% url 'subject' as subject %}
+                     {% url 'editsubject' subject_id=id as editsubject %}
+                      {% url 'Addsubject' as Addsubject %}
+        			<a href="{% url 'subject'%}" class="{% if request.path == subject %} sidebar-active {% endif %} {% if request.path == editsubject %} sidebar-active {% endif %} {% if request.path == Addsubject %} sidebar-active {% endif %}"  >
+        				<span class="icon"><i class="fas fa-home"></i></span>
+   	 				    <span class="title">subject</span>
+        			</a>
+        		</li>
+                <li class="sidebar-link">
+                    {% url 'Room' as Room %}
+                     {% url 'EditRoom' room_id=id as EditRoom %}
+                      {% url 'AddRoom' as AddRoom %}
+                    <a href="{% url 'Room'%}" class="{% if request.path == Room %} sidebar-active {% endif %} {% if request.path == EditRoom %} sidebar-active {% endif %} {% if request.path == AddRoom %} sidebar-active {% endif %}" >
+                        <span class="icon"><i class="fas fa-home"></i></span>
+                        <span class="title">Rooms</span>
+                    </a>
+                </li>
+                <li class="sidebar-link" data-target='#SUBJECT'>
+                    {% url 'AddSession' as AddSession %}
+                    <a href="{% url 'AddSession'%}" class="{% if request.path == AddSession %} sidebar-active {% endif %}">
+                        <span class="icon"><i class="fas fa-home"></i></span>
+                        <span class="title">session</span>
+                    </a>
+                </li>
+                <li class="sidebar-link">
+                    {% url 'staff_leave_view' as staff_leave_view %}
+                    <a href="{% url 'staff_leave_view' %}" class="{% if request.path == staff_leave_view %} sidebar-active {% endif %}" >
+                        <span class="icon"><i class="fas fa-home"></i></span>
+                        <span class="title">staff leave</span>
+                    </a>
+                </li>
+                <li class="sidebar-link">
+                    {% url 'student_leave_view' as student_leave_view %}
+                    <a href="{% url 'student_leave_view' %}" class="{% if request.path == student_leave_view %} sidebar-active {% endif %}" >
+                        <span class="icon"><i class="fas fa-home"></i></span>
+                        <span class="title">student leave</span>
+                    </a>
+                </li>
+        		<li class="sidebar-link" data-target='#ATTENDANCE'>
+        			<a href="{% url 'notification'%}" id="course"onclick="view()">
+        				<span class="icon"><i class="fas fa-home"></i></span>
+   	 				    <span class="title">view attendance</span>
+        			</a>
+        		</li>
+                <li class="sidebar-link">
+                    {% url 'staff_feedback_message' as staff_feedback_message %}
+                    <a href="{% url 'staff_feedback_message'%}" class="{% if request.path == staff_feedback_message %} sidebar-active {% endif %}">
+                        <span class="icon"><i class="fas fa-home"></i></span>
+                        <span class="title">staff feedback</span>
+                    </a>
+                </li>
+        		<li class="sidebar-link">
+                    {% url 'student_feedback_message' as student_feedback_message %}
+        			<a href="{% url 'student_feedback_message'%}" class="{% if request.path == student_feedback_message %} sidebar-active {% endif %}">
+        				<span class="icon"><i class="fas fa-home"></i></span>
+   	 				    <span class="title">student feedback</span>
+        			</a>
+        		</li>
+
+        		<li class="sidebar-link">
+        			<a href="{% url 'timetable'%}" class="{% if request.path == timetable %} sidebar-active{% endif %}">
+        				<span class="icon"><i class="fas fa-home"></i></span>
+   	 				    <span class="title"> Timetable</span>
+        			</a>
+        		</li>
+                <li class="sidebar-link">
+                    {% url 'Meeting_Time' as Meeting_Time %}
+                     {% url 'EditMeetingTime' meetingTime_id.id as EditMeetingTime %}
+                    <a href="{% url 'Meeting_Time'%}" class="{% if request.path == Meeting_Time %} sidebar-active{% endif %} {% if request.path == EditMeetingTime %} sidebar-active {% endif %}">
+                        <span class="icon"><i class="fas fa-home"></i></span>
+                        <span class="title"> Meeting time</span>
+                    </a>
+                </li>
+        	</ul>
+        </div>
+</div>

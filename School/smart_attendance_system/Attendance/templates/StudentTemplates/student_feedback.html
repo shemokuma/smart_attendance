@@ -1,0 +1,66 @@
+{% extends "StudentTemplates/base_template.html" %}
+
+{% block main_content %}
+
+<div class="main" data-content id="">
+<div class="card-header">
+    {% block page_title %}
+    Feedback
+    {% endblock page_title %}
+    <div class="">
+        <a href="/admin_home" >home</a>
+    </div>
+</div>
+<div class="card">
+     <form action="{% url 'student_feedback_save' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+           <label for="staff">feedback message</label>
+           <textarea class="form-control" rows="6" name="feedback_msg"></textarea>
+        </div>
+        <div class="form-group">
+          {% if messages %}
+               {% for message in messages %}
+                    {% if message.tags == 'error' %}
+                          <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                    {% endif %}
+                    {% if message.tags == 'success' %}
+                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                    {% endif %}
+               {% endfor %}
+          {% endif %}
+        </div>
+       <div class="form-button">
+           <button type="submit" value="" class="btn btn-success" id="Fetch_students">leave feedback message</button>
+      </div>
+      <div id="student_data">
+        
+      </div>
+    </form>
+    
+</div>
+<div class="card card-primary">
+  <div class="card-header">
+    <h3 class="card-title"> Feedback history</h3>
+  </div>
+  <div class="table">
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>feedback message</th>
+      <th>feedback Reply</th>
+     
+    </tr>
+    {% for row in feedback_data %}
+      <tr>
+        <td>{{ row.id }}</td>
+        <td>{{ row.feedback }}</td>
+        <td>{{ row.feedback_reply }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+</div>
+</div>
+</div>
+{% endblock main_content %}
+  

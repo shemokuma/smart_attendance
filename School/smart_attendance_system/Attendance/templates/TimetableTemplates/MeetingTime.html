@@ -1,0 +1,45 @@
+{% extends "AdminHodTemplates/base_template.html" %}
+
+{% block main_content %}
+<div class="main">
+<div class="card-header" > 
+  {% block page_title %}
+  meeting Time
+  {% endblock page_title %}
+  <div class="">
+  <a href="/AddMeetingTime">add meeting Time</a>
+  <a href="/admin_home">home</a>
+</div>
+</div>
+<div class="card">
+   <div class="card-header">
+       <div class="">meeting Time details</div>
+   </div>
+   <div class="card-body">
+       <div class="table-responsive">
+           <table width="100%">
+               <thead>
+                   <tr>
+                       <td>Id</td>
+                       <td>Day</td>
+                       <td>Time</td>
+                       <td>action</td>
+                   </tr>
+               </thead>
+               <tbody>
+                {% for meetingTime in meetingTimes %}
+                    <tr>
+                        <td>{{ meetingTime.id }}</td>
+                        <td>{{ meetingTime.meetingTime_day }}</td>
+                        <td>{{ meetingTime.meeting_time }}</td>
+                        <td><a href="/EditMeetingTime/{{meetingTime.id}}" class="btn btn-success">Edit</a></td>
+                   </tr>
+                {% endfor %}
+               </tbody>
+           </table>
+       </div>
+   </div>
+</div>
+</div>
+
+{% endblock main_content %}

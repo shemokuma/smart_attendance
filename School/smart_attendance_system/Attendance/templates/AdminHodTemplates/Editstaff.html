@@ -1,0 +1,22 @@
+
+
+{% extends "AdminHodTemplates/base_template.html" %}
+
+{% block main_content %}
+<div class="main" data-content id="">
+  <div class="card-header">
+     {% block page_title %}
+     Edit staff details| username: {{ username}} |#ID :{{ id }}
+    {% endblock page_title %}
+    <div class="">
+       <a href="/student" >manage student</a>
+       <a href="/admin_home" >home</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header ">Edit staff </div>
+     {% url 'Editstaff_save' as action_path %}
+     {% include 'AdminHodTemplates/form_templates.html' with messages=messages form=form action_path=action_path button_text="Edit staff" %}
+  </div>
+</div>
+{% endblock main_content %}

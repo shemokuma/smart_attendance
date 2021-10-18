@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>smart system</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static "css/all.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/index.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/TestChart.css" %}">
+    
+	{% block custom_css %}{% endblock custom_css %}
+</head>
+<body>
+	<input type="checkbox"id="nav-toggle">
+	{% include 'StaffTemplates/sideber_content.html' with user=user id=id %}
+	
+    <div class="main-content">
+	  {% include 'StaffTemplates/content_header.html'%}
+	  {% block main_content %}{% endblock main_content%}
+      {% include 'StaffTemplates/content_footer.html'%}
+			
+    </div>
+
+    <script type="text/javascript" src="{% static "js/jquery-3.4.1.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/chart.js" %}"></script>
+    <script type="text/javascript" src= "{% static "js/pageLoader.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/TestChart.js" %}"></script>
+  {% block custom_js %}
+  {% endblock custom_js %}
+</body>
+</html>

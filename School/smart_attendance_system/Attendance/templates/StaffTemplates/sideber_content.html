@@ -1,0 +1,46 @@
+<div class="sidebar">
+		<div class="sidebar-brand">
+			<h2><span class="icon"><i class="fab fa-accusoft"></i></span>
+            <span class="title">SHEMKO</span></h2>
+        </div>
+        <div class="sidebar-menu">
+        	<ul>
+        		<li class="sidebar-link  " data-target='#HOME'>
+                    {% url 'staff_home' as staff_home %}
+        			<a href="{% url 'staff_home'%}" class="{% if request.path == staff_home %} sidebar-active {% endif %}">
+        				<span class="icon"><i class="fas fa-home"></i></span>
+   	 				    <span class="title">Dashboard</span>
+        			</a>
+        		</li>
+        		<li class="sidebar-link  " data-target='#HOME'>
+                    {% url 'staff_take_attendance' as staff_take_attendance %}
+                    <a href="{% url 'staff_take_attendance'%}" class="{% if request.path == staff_take_attendance %} sidebar-active {% endif %}">
+                        <span class="icon"><i class="fas fa-home"></i></span>
+                        <span class="title">take attendance</span>
+                    </a>
+                </li>
+        		<li class="sidebar-link  " data-target='#HOME'>
+                    {% url 'staff_update_attendance' as staff_update_attendance %}
+                    <a href="{% url 'staff_update_attendance'%}" class="{% if request.path == staff_update_attendance %} sidebar-active {% endif %}">
+                        <span class="icon"><i class="fas fa-home"></i></span>
+                        <span class="title">updated attendance</span>
+                    </a>
+                </li>
+                <li class="sidebar-link  " data-target='#HOME'>
+                    {% url 'staff_apply_leave' as staff_apply_leave %}
+                    <a href="{% url 'staff_apply_leave'%}" class="{% if request.path == staff_apply_leave%} sidebar-active {% endif %}">
+                        <span class="icon"><i class="fas fa-home"></i></span>
+                        <span class="title">apply leave</span>
+                    </a>
+                </li>
+                <li class="sidebar-link  " data-target='#HOME'>
+                    {% url 'staff_feedback' as staff_feedback %}
+                    <a href="{% url 'staff_feedback'%}" class="{% if request.path == staff_feedback %} sidebar-active {% endif %}">
+                        <span class="icon"><i class="fas fa-home"></i></span>
+                        <span class="title">Feedback</span>
+                    </a>
+                </li>
+
+        	</ul>
+        </div>
+</div>

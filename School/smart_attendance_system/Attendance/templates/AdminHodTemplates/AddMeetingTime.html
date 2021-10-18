@@ -1,0 +1,82 @@
+
+
+
+{% extends "AdminHodTemplates/base_template.html" %}
+
+{% block main_content %}
+
+<div class="main" data-content id="">
+<div class="card-header">
+    {% block page_title %}
+    Add Meeting time
+    {% endblock page_title %}
+    <div class="">
+        <a href="/Meeting_Time" >manage meeting time</a>
+        <a href="/admin_home" >home</a>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">add meeting time</div>
+    <form class="card-body" role="form" method="post" action="{% url 'AddMeetingTime_save'%}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="meeting_time">meeting time</label>
+            <select class="form-control" name="meeting_time">
+            	<option>8:00 To 10:00</option>
+           		<option>10:00 To 12:00</option>
+           		<option>12:00 To 2:00</option>
+           		<option>2:00 To 4:00</option>
+           		<option>4:00 To 6:00</option>
+            </select>
+        </div>
+        <div class="form-group">
+           <label for="day">Day</label>
+           <select class="form-control" name="day">
+           		<option>monday</option>
+           		<option>Tuesday</option>
+           		<option>Wednesday</option>
+           		<option>Thursday</option>
+           		<option>Friaday</option>
+           		<!--("Male","Male"),
+				("Female","Female")
+                {% for course in courses %}
+                    <option value="{{ course.id}}">{{ course.course_name }}</option>
+                {% endfor %}-->
+           </select>
+        </div>
+        <div class="form-group">
+           <label for="room">room</label>
+           <select class="form-control" name="room">
+                {% for room in rooms %}
+                   <option value="{{ room.id}}">{{ room.room_name }}</option>
+                {% endfor %}
+           </select>
+        </div>
+        <div class="form-group">
+           <label for="subject">subject</label>
+           <select class="form-control" name="subject">
+                {% for subject in subjects %}
+                   <option value="{{ subject.id}}">{{ subject.subject_name }}</option>
+                {% endfor %}
+           </select>
+        </div>
+        <div class="form-group">
+          {% if messages %}
+               {% for message in messages %}
+                    {% if message.tags == 'error' %}
+                          <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                    {% endif %}
+                    {% if message.tags == 'success' %}
+                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                    {% endif %}
+               {% endfor %}
+          {% endif %}
+        </div>
+       <div class="form-button">
+           <a href="##" class="btn btn-secondary">Cancel</a>
+           <button type="submit" value="" class="btn btn-success float-right">add new staff</button>
+      </div>
+    </form>
+</div>
+</div>
+{% endblock main_content %}

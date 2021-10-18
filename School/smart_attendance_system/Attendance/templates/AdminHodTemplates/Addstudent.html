@@ -1,0 +1,75 @@
+
+
+{% extends "AdminHodTemplates/base_template.html" %}
+
+{% block main_content %}
+
+<div class="main" data-content id="">
+  <div class="card-header">
+     {% block page_title %}
+     add student
+    {% endblock page_title %}
+    <div class="">
+       <a href="/student" >manage student</a>
+       <a href="/admin_home" >home</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header ">Add student </div>
+    {% url 'Addstudent_save' as action_path %}
+    {% include 'AdminHodTemplates/form_templates.html' with messages=messages form=form action_path=action_path button_text="Add student" %}
+  </div>
+</div>
+{% endblock main_content %}
+{% block custom_js %}
+<script>
+  $(document).ready(function(){
+    $("#id_email").keyup(function(){
+      var email=$(this).val();
+      $.ajax({
+        url:'{% url 'check_email_exist'%}',
+        type:'POST',
+        data:{email:email}
+      })
+      .done(function(response){
+        console.log(response);
+        if(response=="True"){
+          $(".email_error").remove()
+          $("<span  class='email_error' style='padding:5px; color:red;font-weight:bold'>Email Not Available</span>").insertAfter("#id_email");
+        }
+        else{
+          $(".email_error").remove()
+          $("<span  class='email_error' style='padding:5px; color:green;font-weight:bold'>Email Available</span>").insertAfter("#id_email");
+        }
+      })
+      .fail(function(){
+        console.log("failed")
+      })
+    })
+
+     $("#id_username").keyup(function(){
+      var username=$(this).val();
+      $.ajax({
+        url:'{% url 'check_username_exist'%}',
+        type:'POST',
+        data:{username:username}
+      })
+      .done(function(response){
+        console.log(response);
+        if(response=="True"){
+          $(".username_error").remove()
+          $("<span  class='username_error' style='padding:5px; color:red;font-weight:bold'>username Not  Available</span>").insertAfter("#id_username");
+        }
+        else{
+          $(".username_error").remove()
+          $("<span  class='username_error' style='padding:5px; color:green;font-weight:bold'>username  Available</span>").insertAfter("#id_username");
+        }
+      })
+      .fail(function(){
+        console.log("failed")
+      })
+    })
+
+  })
+</script>
+{% endblock custom_js %}

@@ -1,0 +1,19 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>login</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static "css/all.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/index.css" %}">
+</head>
+<body class="form">
+
+    <div class="form-card">
+    <div class="form-card-header">smart attendance system</div>
+    	{% block content %}
+    	{% endblock content %}
+    </div>
+</body>
+</html>

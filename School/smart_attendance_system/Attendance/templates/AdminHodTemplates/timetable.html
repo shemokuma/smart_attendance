@@ -1,0 +1,47 @@
+{% extends "AdminHodTemplates/base_template.html" %}
+{% block page_title %}
+Timetable
+{% endblock page_title %}
+{% block main_content %}
+<div class="main">
+<div class="card-header" > 
+  <div class="">manage timetable</div>
+  <div class="">
+  <a href="/AddDepartment">add Department</a>
+  <a href="/admin_home">home</a>
+</div>
+</div>
+<div class="card">
+   <div class="card-header">
+       <div class="">Department details</div>
+       <form class="search">
+           <input type="" class="search-input" name="" placeholder="search student">
+           <i class="fas fa-search"></i>
+       </form>
+   </div>
+   <div class="card-body">
+       <div class="table-responsive">
+           <table width="100%">
+               <thead>
+                   <tr>
+                       <td>Id</td>
+                       <td>schedule</td>
+                       <td>times</td>
+                       <td>sections</td>
+                   </tr>
+               </thead>
+               <tbody>
+                {% for department in departments %}
+                    <tr>
+                        <td>{{ department.id }}</td>
+                        <td>{{ department.department_name }}</td>
+                   </tr>
+                {% endfor %}
+               </tbody>
+           </table>
+       </div>
+   </div>
+</div>
+</div>
+
+{% endblock main_content %}

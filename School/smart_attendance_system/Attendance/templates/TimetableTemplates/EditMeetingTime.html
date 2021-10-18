@@ -1,0 +1,52 @@
+{% extends "TimetableTemplates/base_template.html" %}
+
+{% block main_content %}
+
+<div class="main" data-content id="">
+<div class="card-header">
+    {% block page_title %}
+    Edit meetingTime datails| meetingTime ID :{{meetingTime.id}}
+    {% endblock page_title %}
+    <div class="">
+        <a href="/MeetingTime" >manage meeting Time</a>
+        <a href="/admin_home" >home</a>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header"> Edit Meeting Time </div>
+    <form class="card-body" role="form" method="post" action="{% url 'EditMeetingTime_save'%}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="DepartmentName">Day</label>
+            <select class="form-control" name="meetingTime_day">
+                    <option>Monday</option>
+                    <option>Tuesday</option>
+                    <option>Wednesday</option>
+                    <option>Thursday</option>
+                    <option>Friaday</option>
+           </select>
+        </div>
+        <div class="form-group">
+            <label for="DepartmentName">Time</label>
+            <input type="text" class="form-control" name="meeting_time" id="departmentName" value="{{meetingTime.meeting_time}}">
+            
+        </div>
+        <div class="form-group">
+             {% if messages %}
+                {% for message in messages %}
+                     {% if message.tags == 'error' %}
+                         <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                     {% else %}
+                         <div class="alert primary-color" style="margin-top:10px">{{ message }}</div>
+                     {% endif %}
+                {% endfor %}
+             {% endif %}
+        </div>
+      <div class="form-button">
+           <a href="#" class="btn btn-secondary">Cancel</a>
+          <button type="submit"  class="btn btn-success float-right">save Edited Meeting Time</button>
+      </div>
+    </form>
+</div>
+</div>
+{% endblock main_content %}

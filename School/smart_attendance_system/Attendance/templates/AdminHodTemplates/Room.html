@@ -1,0 +1,44 @@
+{% extends "AdminHodTemplates/base_template.html" %}
+
+{% block main_content %}
+<div class="main" >
+<div class="card-header" >
+  {% block page_title %}
+    Room
+  {% endblock page_title %}
+  <div class="">
+  <a href="/AddRoom">add Room</a>
+  <a href="/admin_home">home</a>
+</div>
+</div>
+<div class="card">
+   <div class="card-header">
+       <div class="">Room details</div>
+   </div>
+   <div class="card-body">
+       <div class="table-responsive">
+           <table width="100%">
+               <thead>
+                   <tr>
+                       <td>Id</td>
+                       <td>Room name</td>
+                       <td>Room capacity</td>
+                       <td>action</td>
+                   </tr>
+               </thead>
+               <tbody>
+                {% for room in rooms %}
+                    <tr>
+                        <td>{{ room.id }}</td>
+                        <td>{{ room.room_name }}</td>
+                        <td>{{ room.room_capacity }}</td>
+                        <td><a href="/EditRoom/{{room.id}}" class="btn btn-success">Edit</a></td>
+                   </tr>
+                {% endfor %}
+               </tbody>
+           </table>
+       </div>
+   </div>
+</div>
+</div>
+{% endblock main_content %}

@@ -1,0 +1,78 @@
+{% extends "StaffTemplates/base_template.html" %}
+
+{% block main_content %}
+
+<div class="main" data-content id="">
+<div class="card-header">
+    {% block page_title %}
+    Apply Leave
+    {% endblock page_title %}
+    <div class="">
+        <a href="/admin_home" >home</a>
+    </div>
+</div>
+<div class="card">
+     <form action="{% url 'staff_apply_leave_save'%}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+           <label for="course">Leave Date</label>
+           <input type="date" name="leave_date" class="form-control" placeholder="leave date">
+        </div>
+        <div class="form-group">
+           <label for="staff">Leave Reason</label>
+           <textarea class="form-control" rows="6" name="leave_msg"></textarea>
+        </div>
+        <div class="form-group">
+          {% if messages %}
+               {% for message in messages %}
+                    {% if message.tags == 'error' %}
+                          <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                    {% endif %}
+                    {% if message.tags == 'success' %}
+                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                    {% endif %}
+               {% endfor %}
+          {% endif %}
+        </div>
+       <div class="form-button">
+           <button type="submit" value="" class="btn btn-success" id="Fetch_students">Fetch attendance</button>
+      </div>
+      <div id="student_data">
+        
+      </div>
+    </form>
+    
+</div>
+<div class="card card-primary">
+  <div class="card-header">
+    <h3 class="card-title"> leave Apply history</h3>
+  </div>
+  <div class="table">
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>leave   date</th>
+      <th>leave message</th>
+      <th>leave status</th>
+    </tr>
+    {% for row in leave_data %}
+      <tr>
+        <td>{{ row.id }}</td>
+        <td>{{ row.leave_date }}</td>
+        <td>{{ row.leave_message }}</td>
+        <td>
+          {% if row.leave_status == 1 %}
+            <span class="alert alert-success">Approved</span>
+          {% elif row.leave_status == 2 %}
+            <span class="alert  alert-danger">Rejected</span>
+          {% else %}
+            <span class="alert alert-info">pending</span>
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+</div>
+</div>
+</div>
+{% endblock main_content %}

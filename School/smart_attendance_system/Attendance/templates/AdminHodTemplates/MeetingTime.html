@@ -1,0 +1,52 @@
+
+AddMeetingTime
+
+{% extends "AdminHodTemplates/base_template.html" %}
+{% block page_title %}
+Meeting Time
+{% endblock page_title %}
+{% block main_content %}
+<div class="main" data-content id="COURSE">
+<div class="card-header" > 
+  <div class="">manage Meeting Time</div>
+  <div class="">
+  <a href="/AddMeetingTime">Add MeetingTime</a>
+  <a href="/admin_home">home</a>
+</div>
+</div>
+<div class="card">
+   <div class="card-header">
+       <div class="">MeetingTime details</div>
+       </div>
+   <div class="card-body">
+       <div class="table-responsive">
+           <table width="100%">
+               <thead>
+                   <tr>
+                       <td>Id</td>
+                       <td>meeting time</td>
+                       <td>day</td>
+                       <td>Room</td>
+                       <td>subject</td>
+                       <td>action</td>
+                   </tr>
+               </thead>
+               <tbody>
+                {% for meetingTime in meetingTimes %}
+                    <tr>
+                        <td>{{ meetingTime.id }}</td>
+                        <td>{{ meetingTime.meeting_time_time }}</td>
+                        <td>{{ meetingTime.day }}</td>
+                        <td>{{ meetingTime.room_id.room_name}}</td>
+                        <td>{{ meetingTime.subject_id.subject_name }}</td>
+                       	<td><a href="/EditMeetingTime/{{ meetingTime.id}}" class="btn btn-success">Edit</a></td>
+                   </tr>
+                {% endfor %}
+               </tbody>
+           </table>
+       </div>
+   </div>
+</div>
+</div>
+
+{% endblock main_content %}

@@ -1,0 +1,57 @@
+
+
+
+{% extends "AdminHodTemplates/base_template.html" %}
+
+{% block main_content %}
+
+<div class="main" data-content id="">
+<div class="card-header">
+    {% block page_title %}
+    Add Course
+    {% endblock page_title %}
+    <div class="">
+        <a href="/course" >manage course</a>
+        <a href="/admin_home" >home</a>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header"> add course </div>
+    <form class="card-body" role="form" method="post" action="{% url 'Addcourse_save'%}">
+        {% csrf_token %}
+        <div class="form-group">
+           <label for="max_number_of_student">max number of student</label>
+           <input type="text" class="form-control" name="max_number_of_student" id="max_number_of_student" placeholder="Enter max_number_of_student">
+        </div>
+        <div class="form-group">
+           <label for="courseName">course Name</label>
+           <input type="text" class="form-control" name="course" id="courseName" placeholder="Enter course">
+        </div>
+        <div class="form-group">
+           <label for="department">Department</label>
+           <select class="form-control" name="department">
+                {% for department in departments %}
+                    <option value="{{ department.id}}">{{ department.department_name }}</option>
+                {% endfor %}
+           </select>
+        </div>
+        <div class="form-group">
+             {% if messages %}
+                {% for message in messages %}
+                     {% if message.tags == 'error' %}
+                         <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                     {% endif %}
+                     {% if message.tags == 'success' %}
+                         <div class="alert primary-color" style="margin-top:10px">{{ message }}</div>
+                     {% endif %}
+                {% endfor %}
+             {% endif %}
+        </div>
+      <div class="form-button">
+           <a href="#" class="btn btn-secondary">Cancel</a>
+           <input type="submit" value="add new Course" class="btn btn-success float-right">
+      </div>
+    </form>
+</div>
+</div>
+{% endblock main_content %}

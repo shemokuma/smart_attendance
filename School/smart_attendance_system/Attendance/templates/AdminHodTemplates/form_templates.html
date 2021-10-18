@@ -1,0 +1,29 @@
+
+
+
+<form class="card-body" role="form" action="{{ action_path }}" method="post" enctype="multipart/form-data" autocomplete="off">
+     {% csrf_token %}
+      {% for field in form %}
+      <div class="form-group">
+      	{{ field.errors }}
+      	{{ field.label_tag }}
+      	{{ field }}
+      </div>
+      {% endfor%}   
+      <div class="form-group">
+      {% if messages %}
+      {% for message in messages %}
+      {% if message.tags == 'error' %}
+      <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+      {% endif %}
+      {% if message.tags == 'success' %}
+      <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+      </div>
+     <div class="form-button">
+           <button type="submit" value="add new Student" class="btn btn-success float-right">{{button_text}}</button>
+      </div>
+</form>
+      

@@ -1,0 +1,52 @@
+
+{% extends "AdminHodTemplates/base_template.html" %}
+{% block page_title %}
+course
+{% endblock page_title %}
+{% block main_content %}
+<div class="main" data-content id="COURSE">
+<div class="card-header" > 
+  <div class="">manage course</div>
+  <div class="">
+  <a href="/Addcourse">add course</a>
+  <a href="/admin_home">home</a>
+</div>
+</div>
+<div class="card">
+   <div class="card-header">
+       <div class="">course details</div>
+       <form class="search">
+           <input type="" class="search-input" name="" placeholder="search student">
+           <i class="fas fa-search"></i>
+       </form>
+   </div>
+   <div class="card-body">
+       <div class="table-responsive">
+           <table width="100%">
+               <thead>
+                   <tr>
+                       <td>Id</td>
+                       <td>Course name</td>
+                       <td>max number of  student</td>
+                       <td>Department name</td>
+                       <td>action</td>
+                   </tr>
+               </thead>
+               <tbody>
+                {% for course in courses %}
+                    <tr>
+                        <td>{{ course.id }}</td>
+                        <td>{{ course.course_name }}</td>
+                        <td>{{ course.max_number_of_student }}</td>
+                        <td>{{ course.department_id.department_name }}</td>
+                        <td><a href="/Editcourse/{{course.id}}" class="btn btn-success">Edit</a></td>
+                   </tr>
+                {% endfor %}
+               </tbody>
+           </table>
+       </div>
+   </div>
+</div>
+</div>
+
+{% endblock main_content %}

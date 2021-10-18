@@ -1,0 +1,61 @@
+
+{% extends "AdminHodTemplates/base_template.html" %}
+
+{% block main_content %}
+
+<div class="main" data-content id="">
+ <div class="card-header">
+  {% block page_title %}
+  Edit subject details| subject: {{ subject.subject_name}} |#ID :{{subject.id}}
+  {% endblock page_title %}
+  <div class="">
+     <a href="/subject" >manage subject</a>
+     <a href="/admin_home" >home</a>
+  </div>
+</div>
+<div class="card">
+    <div class="card-header"> add subject </div>
+    <form class="card-body" role="form" action="/Editsubject_save" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="subject">subject name</label>
+            <input class="form-control" type="text" name="subject_name"  id="SubName" value="{{subject.subject_name}}">
+            <input  type="hidden" name="subject_id"  value="{{subject.id}}">
+        </div>
+        <div class="form-group">
+           <label for="course">Course</label>
+           <select class="form-control" name="course">
+                {% for course in courses %}
+                    <option value="{{ course.id}}"{% if course.id == subject.course_id.id %} selected {% endif %} >{{ course.course_name }}</option>
+                {% endfor %}
+           </select>
+        </div>
+        <div class="form-group">
+           <label for="staff">staff</label>
+           <select class="form-control" name="staff">
+                {% for staff in staffs %}
+                    <option value="{{ staff.id}}" {% if staff.id == subject.staff_id.id %} selected {% endif %}>{{ staff.first_name }} {{staff.last_name}}</option>
+                {% endfor %}
+           </select>
+        </div>
+        <div class="form-group">
+          {% if messages %}
+               {% for message in messages %}
+                    {% if message.tags == 'error' %}
+                          <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                    {% endif %}
+                    {% if message.tags == 'success' %}
+                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                    {% endif %}
+               {% endfor %}
+          {% endif %}
+        </div>
+       <div class="form-button">
+           <a href="##" class="btn btn-secondary">Cancel</a>
+           <button type="submit" value="" class="btn btn-success float-right">Edit subject</button>
+      </div>
+    </form>
+</div>
+
+</div>
+{% endblock main_content%}

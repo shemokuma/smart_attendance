@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>smart system</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static "css/all.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/index.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/TestChart.css" %}">
+    <script type="text/javascript" src="{% static "js/jquery-3.4.1.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/chart.js" %}"></script>
+    <script type="text/javascript" src= "{% static "js/pageLoader.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/TestChart.js" %}"></script>
+</head>
+<body>
+	<input type="checkbox"id="nav-toggle">
+	<div class="sidebar">
+		<div class="sidebar-brand">
+			<h2><span class="icon"><i class="fab fa-accusoft"></i></span>
+            <span class="title">SHEMKO</span></h2>
+        </div>
+        <div class="sidebar-menu">
+        	<ul>
+        		<li class="sidebar-link sidebar-active " data-target='#HOME'>
+        			<a href="#HOME" id="dashboard"onclick="dashboard()">
+        				<span class="icon"><i class="fas fa-home"></i></span>
+   	 				    <span class="title">Dashboard</span>
+        			</a>
+        		</li>
+        		<li class="sidebar-link" data-target='#STAFF'>
+        			<a href="#STAFF" id="staff"onclick="staff()">
+        				<span class="icon"><i class="fas fa-home"></i></span>
+   	 				    <span class="title">staff</span>
+        			</a>
+        		</li>
+        		<li class="sidebar-link" data-target='#STUDENT'>
+        			<a href="#STUDENT" id="student"onclick="student()">
+        				<span class="icon"><i class="fas fa-home"></i></span>
+   	 				    <span class="title">student</span>
+        			</a>
+        		</li>
+        	 <li class="sidebar-link" data-target='#COURSE'>
+        			<a href="#COURSE" id="course"onclick="course()">
+        				<span class="icon"><i class="fas fa-home"></i></span>
+   	 				    <span class="title">course</span>
+        			</a>
+        		</li>
+        		<li class="sidebar-link" data-target='#SUBJECT'>
+        			<a href="#SUBJECT" id="subject" onclick="subject()">
+        				<span class="icon"><i class="fas fa-home"></i></span>
+   	 				    <span class="title">subject</span>
+        			</a>
+        		</li>
+        		<li class="sidebar-link" data-target='#ATTENDANCE'>
+        			<a href="#ATTENDANCE" id="course"onclick="view()">
+        				<span class="icon"><i class="fas fa-home"></i></span>
+   	 				    <span class="title">view attendance</span>
+        			</a>
+        		</li>
+        		<li class="sidebar-link" data-target='#FEEDBACK'>
+        			<a href="#FEEDBACK" id="feedback"onclick="feedback()">
+        				<span class="icon"><i class="fas fa-home"></i></span>
+   	 				    <span class="title">feedback</span>
+        			</a>
+        		</li>
+        		<li class="sidebar-link" data-target='#LEAVE'>
+        			<a href="#LEAVE" id="leave"onclick="leave()">
+        				<span class="icon"><i class="fas fa-home"></i></span>
+   	 				    <span class="title"> leave</span>
+        			</a>
+        		</li>
+        		<li class="sidebar-link" data-target='#TIMETABLE'>
+        			<a href="#TIMETABLE" id="leave"onclick="leave()">
+        				<span class="icon"><i class="fas fa-home"></i></span>
+   	 				    <span class="title"> Timetable</span>
+        			</a>
+        		</li>
+        	</ul>
+        </div>
+</div>
+<div class="main-content">
+	<div class="header">
+		<h1>
+          <label for="nav-toggle">
+               <span class="fas fa-bars"></span>
+          </label>
+          Dashboard
+        </h1>
+        <div class="search-wrapper">
+            <span class="fas fa-search"></span>
+            <input type="search" placeholder="search here">
+        </div>
+        <div class="user-wrapper">
+            <img src="{% static "assets/shem.jpg" %}" width="30px" height="30px" alt="">
+            <div>
+                <h4>shem o</h4>
+                <small>super admin</small>
+            </div>
+        </div>
+	</div>
+	<div class="main sidebar-active" data-content id="HOME">
+    </div>
+		
+</div>
+<script type="text/javascript">
+  const tabs=document.querySelectorAll('[data-target]')
+  const tabContents=document.querySelectorAll('[data-content]')
+  tabs.forEach(tab =>{
+    tab.addEventListener('click',()=>{
+      const target=document.querySelector(tab.dataset.target)
+      tabContents.forEach(tabContent =>{
+         tabContent.classList.remove('sidebar-active')
+      })
+     target.classList.add('sidebar-active');
+     tabs.forEach(tab=>{
+       tab.classList.remove('sidebar-active')
+     })
+     tab.classList.add('sidebar-active')
+   })
+ })
+
+</script>
+</body>
+</html>

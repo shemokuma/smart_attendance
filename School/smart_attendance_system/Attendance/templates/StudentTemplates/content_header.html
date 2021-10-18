@@ -1,0 +1,25 @@
+{% load static %}
+<div class="header">
+		<h1>
+          <label for="nav-toggle">
+               <span class="fas fa-bars"></span>
+          </label>
+          Dashboard
+        </h1>
+        <div class="search-wrapper">
+            <span class="fas fa-search"></span>
+            <input type="search" placeholder="search here">
+        </div>
+        <div class="user-wrapper">
+            <img src="{% static "assets/shem.jpg" %}" width="30px" height="30px" alt="">
+            <div>
+                <a href="{% url 'student_profile' %}">{{ user.username }}</a>
+            </div>
+        </div>
+        <div class="user-wrapper">
+                <a href="{% url 'logout_user'%}" >
+                        <span class="icon"><i class="fas fa-power-off"></i></span>
+                        <span class="title"></span>
+                </a>
+        </div>
+</div>
